@@ -16,7 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 
-
+SOCIAL_AUTH_FACEBOOK_KEY = '568273710190763'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '8e8ea6d596a9d6b8cb09942eb99cf10d'  # App Secret
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'planner',
-	'poll.apps.PollConfig'
+	'poll.apps.PollConfig',
+    'social_django', #social login
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,6 +52,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', #social login
 ]
 
 ROOT_URLCONF = 'IdeaLyst.urls'
@@ -65,10 +68,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', #social login
+                'social_django.context_processors.login_redirect', #social login
             ],
         },
     },
 ]
+
+#social login
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'IdeaLyst.wsgi.application'
 
