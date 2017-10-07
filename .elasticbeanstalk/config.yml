@@ -1,9 +1,13 @@
 branch-defaults:
   master:
-    environment: IdeaLyst-dev
+    environment: IdeaLyst-dev2
     group_suffix: null
   test:
     environment: IdeaLyst-dev2
+environment-defaults:
+  IdeaLyst-dev2:
+    branch: null
+    repository: null
 global:
   application_name: IdeaLyst
   branch: null
