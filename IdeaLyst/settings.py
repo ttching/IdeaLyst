@@ -25,7 +25,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '8e8ea6d596a9d6b8cb09942eb99cf10d'  # App Secret
 SECRET_KEY = '1=#zfs^(d+3+6h3b_@@=aq0zfz(8s@b!%2v3&w*!unxjvy&6$1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['IdeaLyst-dev2.us-west-1.elasticbeanstalk.com','127.0.0.1']
 
@@ -146,4 +146,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    '/static/',
+)
